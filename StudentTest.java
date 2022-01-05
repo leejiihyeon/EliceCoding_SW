@@ -1,67 +1,63 @@
-package ch6;
+package test;
+/*
+main(String[] args) 메서드를 포함하는 또 다른 클래스를 
+작성합니다.
+2-1> command line argument - 명령행 매개변수를 이용하여 사용자로부터
+  student가 참조하는 객체의 이름, 소속, 과정명, 
+  교육비, 부가금을 입력받습니다.
+  
+2-2> 교육생 클래스의 객체를 생성하여 student
+ 라는 이름의 변수로 참조하도록 합니다.
+이 때 2-1 입력 5개 변수를 이름, 소속, 과정명,
+교육비, 부가금 변수값으로 초기화(=값 할당)합니다.
 
-class Student {
-	//Student () { } //자동 정의 = default constructor
-	Student(int i, String n, String m) { //생성자 1개 정의 //{System.out.println("생성자호출");} //사용자 정의 변경 = default constructor 수정
-		this.id = i;
-		this.name = n;
-		this.major = m;
-	}
-	int id; //학번
-	String name;
-	String major; //전공
-	void study() { //메서드 study
-		System.out.println(name + " 학생은 " + major + " 공부를 열심히 합니다.");
-	}
-	Student() {
-		id= -1;
-		name = "none";
-		major = "전공미정";
-		
-	}
-}
+2-3> 환금급을 계산하자
+	환급금은 
+	과정명이 "자바프로그래밍" 이면
+	입력한 교육비의 25% + 부가금 이고,
+	과정명이 "JDBC프로그래밍" 이면
+	입력한 교육비의 20% + 부가금 이고,
 
+	과정명이 "JSP프로그래밍" 이면
+	입력한 교육비의 15% + 부가금 으로        
+    계산하여 초기화합니다.
+
+    그밖의 과정명은 
+    "잘못 입력되었습니다"는 에러 메시지를 출력합니다.
+
+	올바른 과정명은 
+	student  변수 참조 객체 내부의 
+	이름, 소속, 과정명, 교육비, 부가금, 환급금을 출력합니다. 
+*/
 
 public class StudentTest {
 
 	public static void main(String[] args) {
 		
-		Student st1 = new Student(10000, "김대한", "it전산학");
-		//st1.id = 10000;
-		//st1.name = "김대한";
-		//st1.major = "it전산학";
-		st1.study();
 		
-		Student st2 = new Student(20000, "박민국", "한국어문학");
-//		st2.id = 20000;
-//		st2.name = "박민국";
-//		st2.major = "한국어문학";
-		st2.study();
+		Student s1 = new Student();
 		
-		Student st3 = new Student(10000, "김대한", "it전산학");
-		st3.study();
-
-		C c1 = null; //null 값 명시적 저장
-		C c2 = new C(); //객체주소값 저장
-		System.out.println(c1);
-		System.out.println(c2); //ch6.C@15db9742
-	}
-}
-
-class C {
-	int i = 10, j = 20 , k = 30;
+		s1.name = args[0];
+		s1.dept = args[1];
+		s1.course = args[2]; 
+		s1.pay = Integer.parseInt(args[3]);
+		s1.addmoney = Integer.parseInt(args[4]);
+		s1.refund = 0;
+		
+		System.out.println("이름="+s1.name+" 소속="+s1.dept+" 과정="+s1.course+" 교육비"+s1.pay+" 부가금="+s1.addmoney+" 환급금="+s1.refund);
 	
-}
-
-class D {
-	int i, j;
-	int l = 10;
-	int k = l;
-	
-	
-	D(){}
-	D(int i){this.i = i;}
-	void m1() {
-		System.out.println(j);
+		if(s1.course.equals("자바프로그래밍")) {
+			s1.refund = (int) (s1.pay*0.25);
+			System.out.println(args[0]+" 학생은 "+s1.dept+"에서"+args[2]+" 과정을 듣고 있으며 이 과목의 수강료는 "+s1.pay+"원이고 환급금은 "+s1.refund+"입니다.");
+			
+		} else if(s1.course.equals("JDBC프로그래밍")) {
+			s1.refund = (int)(s1.pay*0.20);
+			System.out.println(args[0]+" 학생은"+s1.dept+"에서"+args[2]+"과정을 듣고 있으며 이 과목의 수강료는 "+s1.pay+"원이고 환급금은 "+s1.refund+"입니다.");
+		} else if(s1.course.equals("JSP프로그래밍")) {
+			s1.refund = (int)(s1.pay*0.15);
+			System.out.println(args[0]+" 학생은"+s1.dept+"에서"+args[2]+"과정을 듣고 있으며 이 과목의 수강료는 "+s1.pay+"원이고 환급금은 "+s1.refund+"입니다.");
+		} else {
+			System.out.println("잘못 입력되었습니다.");
+		}
 	}
 }
