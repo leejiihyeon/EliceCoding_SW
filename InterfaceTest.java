@@ -30,6 +30,8 @@ public class InterfaceTest {
 	sw.lunch(); //인터페이스 구현(2개 인터페이스 포함)
 	sw.work(); //인터페이스 구현
 	sw.teach(); //클래스 상속
+	System.out.println(Student.name); //인터페이스 상속 2개중 학생 인터페이스
+	System.out.println(Worker.name); //인터페이스 상속 2개중 교직원 인터페이스
 	
 	}
 }
