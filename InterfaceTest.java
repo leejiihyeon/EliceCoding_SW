@@ -1,11 +1,18 @@
 class Teacher {
+	String name = "선생님";
 	void teach() {
 		System.out.println("가르치다");
 	}
 }
 
 class StudentWorker extends Teacher implements Worker, Student {
-
+	
+	String name = "조교";
+	//String name = "선생님";
+	void getName() {
+		System.out.println(name);
+		System.out.println(super.name); //상위 요소 객체
+	}
 	@Override
 	public void study() {
 		System.out.println("공부 하다");
@@ -32,6 +39,8 @@ public class InterfaceTest {
 	sw.teach(); //클래스 상속
 	System.out.println(Student.name); //인터페이스 상속 2개중 학생 인터페이스
 	System.out.println(Worker.name); //인터페이스 상속 2개중 교직원 인터페이스
-	
+	System.out.println(sw.name);
+	System.out.println();
+	sw.getName();
 	}
 }
