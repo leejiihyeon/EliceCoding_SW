@@ -7,6 +7,7 @@ public class ObjectTest {
 		MyObject o1 = new MyObject(100, "java");
 		MyObject o2 = new MyObject(100, "java");
 		
+		//getClsss().getName()@16진수(hashcode()-객체구분식별자)
 		//getClass().getName() + '@' + Integer.toHexString(hashCode())
 		//패키지명.클래스명@16진수(주소값)
 		//java.lang.Object@15db974
@@ -36,10 +37,14 @@ class MyObject /*extends Object*/{
 		this.msg = msg;
 	}
 	@Override
-	public String toString() {
-		return code + "-" + msg;
-		
+	public int hashCode() {
+		return code;
 	}
+	@Override
+	public String toString() {
+		return hashCode()+"";
+	}
+	
 	@Override
 	public boolean equals(Object obj) { //o1.equals(o2) //obj=o2;
 		//MyObject 타입이고 code, msg 변수값 동일하면 true
