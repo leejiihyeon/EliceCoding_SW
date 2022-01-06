@@ -1,46 +1,50 @@
-package ch2;
+package ch9;
+/*
+JAVA API를 사용하여 다음과 같은 결과가 나오도록 빈칸을 채우십시오. 단, 빈칸은 반드시 적절한 메소드를 사용해서 채워져야 합니다.
 
-public class StringTest {
+---------------------------
+실행 결과: 
+1. 이름: Arnold Alois Schwarzenegger
+2. 이름 (대문자): ARNOLD SCHWARZENEGGER
+3. 이니셜:  AAS
+4. First Name은 arnold이다. (대소문자 구분; T/F):  false
+5. First Name은 arnold이다. (대소문자 미구분; T/F):  true
+6. Last Name Schwarzenegger의 index 번호 6~13까지 문자열 : zenegger
+7. Last Name Schwarzenegger에서 negger 문자열의 위치 : 8
+---------------------------
+*/
 
-	public static void main(String[] args) {
+class StringTest {
+  public static void main(String[] args) {
+	String first = "Arnold";
+	String middle = "Alois";
+	String last = "Schwarzenegger";
+	String initials;
+	String firstInit, middleInit, lastInit;
 
-		String s1 = "java";
-		char c1 = 'j';
-		int i1 = 100;
-		
-		System.out.println(s1); //String - 0개 이상의 문자열 ""
-		System.out.println(c1); //char - 반드시 1개의 문자만 ''
-		
-		System.out.println(s1+c1); //javaj
-		System.out.println(s1+i1); //java100
-		System.out.println(c1+i1); //206
-		
-		// + : 1. 숫자 덧셈 - 정수/실수 + 실수/정수 , 단일문자 unicode ('a' -> 97, 'b' ->98, 'j' ->106)
-		//	   2. 문자열 결합 - String + 다른 타입, 다른 타입+ String, String + String 
+	firstInit = first.substring(0, 1); //A
+	middleInit = middle.substring(0, 1); //A
+	lastInit = last.substring(0, 1); //S
+	initials = firstInit + middleInit + lastInit;
 
-		byte b1 = 127; //1byte정수=8bit / [부호1bit][값7bit] --> -2^7 ~ 2^7-1 --> -128~127
-		//byte b2 = 128;
-		
-		int b2 = 1280000000; //4byte
-		
-		//형변환
-		int i2 = 127; //127 (4byte)의 크기로 127을 표현
-		byte b3 = (byte)i2; //127 (1byte)의 크기로 127을 표현
-		//(타입명)
-		
-		int i3 = 65;
-		System.out.println(i3); //65 - 'a'->97, 'A'->65 , '0'->48
-		System.out.println((char)i3); //A
-		
-		int i0 = 48;
-		System.out.println(i0); //48
-		System.out.println((char)i0); //'0'
-		
-		int i11 = 97;
-		System.out.println(i11);
-		System.out.println((char)i11);
-		//'A'출력
-		System.out.println(i11-32);
-		System.out.println((char)(i11-32));
-	}
+	System.out.print("1. 이름: ");
+	System.out.println(first + " " + middle + " " + last); //String + 연산자
+	System.out.print("2. 이름 (대문자): ");
+	System.out.println(first.toUpperCase() + "" +last.toUpperCase());
+	System.out.print("3. 이니셜:  ");
+	System.out.println(initials);
+	System.out.println("4. First Name은 arnold이다. (대소문자 구분; T/F):  " + first.equals("arnold"));
+	System.out.println("5. First Name은 arnold이다. (대소문자 미구분; T/F):  " + first.equalsIgnoreCase("arnold"));
+	//System.out.println(last.length()); //14 (0~13)
+	System.out.println("6. Last Name " + last + "의 index 번호 6~13까지 문자열 : " + last.substring(6, 14));
+	System.out.println("7. Last Name " + last + "에서 negger 문자열의 위치 : " + last.indexOf("negger"));		
+	
+	StringBuffer sb1 = new StringBuffer();
+	//sb1.append("strigbuffer");
+	System.out.println(sb1.length()); //0
+	System.out.println(sb1.capacity()); //16
+  
+  
+  
+  }
 }
