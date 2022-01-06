@@ -1,6 +1,8 @@
 package ch10;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FormatTest {
 
@@ -29,6 +31,13 @@ public class FormatTest {
 		
 		df = new DecimalFormat("##%");
 		System.out.println(df.format(0.5678));
-	}
+		
+		Date now = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy - MM - dd - HH - mm - ss -EEE");
+		
+		//날짜와 시간 - 지역, 개인별 다른 포맷
+		String nowstr = sdf.format(now);
+		System.out.println(nowstr);
 
+	}
 }
