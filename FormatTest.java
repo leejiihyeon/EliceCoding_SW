@@ -1,6 +1,9 @@
 package ch10;
 
+import java.text.ChoiceFormat;
 import java.text.DecimalFormat;
+import java.text.MessageFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -39,5 +42,18 @@ public class FormatTest {
 		String nowstr = sdf.format(now);
 		System.out.println(nowstr);
 
+		double [] scores = {60, 70, 80, 90}; //경계선값 작은값부터
+		String [] grades = {"D등급", "C등급", "B등급", "A등급"}; //Scores 경계선 순서
+		ChoiceFormat cf = new ChoiceFormat(scores, grades);
+		System.out.println(cf.format(98.5));
+		System.out.println(cf.format(0));
+		System.out.println(cf.format(67));
+		System.out.println(cf.format(88));
+		
+		Object [] data = {"이자바", 98.5, 1, nowstr};
+		String msg = "{0} 학생이 {3} 일시에 응시한 시험성적은 {1} 이고 현재 {2}등입니다.";
+		System.out.println(MessageFormat.format(msg, data));
+		
+		
 	}
 }
