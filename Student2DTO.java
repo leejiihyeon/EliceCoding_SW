@@ -8,7 +8,7 @@ public class Student2DTO {
 	String major;
 	String regdate;
 	double score;
-	//생성자
+	//생성자 오버로딩
 	public Student2DTO(String name, String email, String phone, String major, double score) {
 		super();
 		this.name = name;
@@ -17,6 +17,16 @@ public class Student2DTO {
 		this.major = major;
 		this.score = score;
 	}
+	
+	
+	public Student2DTO(int id, String name, String major) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.major = major;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -59,9 +69,10 @@ public class Student2DTO {
 	public void setScore(double score) {
 		this.score = score;
 	}
+	@Override
+	public String toString() {
+		return id+"-"+name+"-"+major;
+	}
 	
-	//setter/getter
-	
-	//toString
 	
 }
