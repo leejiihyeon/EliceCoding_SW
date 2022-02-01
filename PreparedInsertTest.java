@@ -18,12 +18,9 @@ public class PreparedInsertTest {
 		//명령행 매개변수 5개 입력 - 이자바 java2@b.com 01022246788 법학 us
 		String insertSQL = "insert into students values(null, ?, ?, ?, ?, default, ?)";
 		
-		/* update 테이블명 set 변경컬럼명=? where 컬럼명 = ? limit ? */
-		/* delete from 테이블명 where 컬럼명 > ? and 컬럼명 < ?*/
-		
 		PreparedStatement pt = conn.prepareStatement(insertSQL);// db전송 구문분석 컴파일-저장
 		 //sql 입력파라미터값 설정
-		 pt.setString(1, args[0]);
+		 //pt.setString(1, args[0]);
 		 pt.setString(2, args[1]);
 		 pt.setString(3, args[2]);
 		 pt.setString(4, args[3]);

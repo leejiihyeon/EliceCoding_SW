@@ -19,12 +19,10 @@ public class UpdateTest {
 				+ " where first_name='" + args[0] + "'";
 		
         /*delete from emp_copy where first_name like '%사원%'  */
-		/*create table / drop table... - jdbc program (insert delete update select)*/
 		Statement st = conn.createStatement();
 		int updateROW = st.executeUpdate(updateSQL);
 		System.out.println(updateROW + " 개의 행 수정 완료");
 		
-		st.close();
 		conn.close();
 		System.out.println("mysql db 연결 해제 성공");		
 		}
